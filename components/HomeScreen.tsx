@@ -1,9 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
-import {NavigationContainer} from "@react-navigation/native";
-import {createNativeStackNavigator, NativeStackScreenProps} from "@react-navigation/native-stack";
-import { RootStackParamList } from './tyes';
-import { useState } from 'react';
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import React, { useState } from "react";
+import { Button, TextInput, View } from "react-native";
+import { RootStackParamList } from "./tyes";
+
 
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, "Home">;
@@ -56,37 +55,4 @@ const  HomeScreen: React.FC<HomeScreenProps> = (props) => {
   );
 }
 
-type ProfileScreenProps = NativeStackScreenProps<RootStackParamList, "Profile">;
-
-const  ProfileScreen: React.FC<ProfileScreenProps> = (props) => {
-
-  
-  return (
-    <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-      <Button title='Home' onPress={() => props.navigation.push("Home")}></Button>
-      <Text>{JSON.stringify( props.route.params.data)}</Text>
-    </View>
-  );
-}
-
-const Stack = createNativeStackNavigator<RootStackParamList>();
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Home' component={HomeScreen}></Stack.Screen>
-        <Stack.Screen name='Profile' component={ProfileScreen}></Stack.Screen>
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default HomeScreen;
